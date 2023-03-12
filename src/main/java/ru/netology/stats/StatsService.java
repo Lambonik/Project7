@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class StatsService {
     public int getSumSales(int[] sales) {
         int sumSales = 0;
+
         for (int i : sales) {
             sumSales = sumSales + i;
         }
@@ -13,6 +14,7 @@ public class StatsService {
 
     public int getAvgSumSales(int[] sales) {
         int count = 0;
+
         for (int i : sales) {
             count = count + 1;
         }
@@ -42,11 +44,10 @@ public class StatsService {
     }
 
     public int getCountMonthUnderAvgSales(int[] sales) {
-        int avgSales = getSumSales(sales) / (int) Arrays.stream(sales).count();
         int countMonth = 0;
 
         for (int i : sales) {
-            if (i > avgSales) {
+            if (i > getAvgSumSales(sales)) {
                 countMonth = countMonth + 1;
             }
         }
@@ -54,11 +55,10 @@ public class StatsService {
     }
 
     public int getCountMonthUpperAvgSales(int[] sales) {
-        int avgSales = getSumSales(sales) / (int) Arrays.stream(sales).count();
         int countMonth = 0;
 
         for (int i : sales) {
-            if (i < avgSales) {
+            if (i < getAvgSumSales(sales)) {
                 countMonth = countMonth + 1;
             }
         }
